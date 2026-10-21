@@ -63,8 +63,9 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
-    {   // can only jump if you're ready to jump
+    private void FixedUpdate() { 
+        if (!gameStarted) { return; } // don't allow movement until the game starts
+       // can only jump if you're ready to jump
         if (jumpQueued)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
